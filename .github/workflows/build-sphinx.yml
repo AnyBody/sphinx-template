@@ -28,7 +28,7 @@ jobs:
       - name: upload artifact 🚀
         uses: actions/upload-pages-artifact@main
         with:
-          folder: Docs/_build/html
+          path: Docs/_build/html/
 
   deploy: 
     needs: build
