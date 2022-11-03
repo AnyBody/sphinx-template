@@ -26,7 +26,7 @@ conda.
    conda env create -f Docs/environment.yaml
    ```
 
-2. Customize the `Docs/conf.py` file to adapt the project title names etc. .
+2. Customize the `Docs/conf.py` file to adapt project as needed. (delete `quickstart.md` and `customize/`.
 
 3. To build the sphinx documenation's HTML pages run the following: 🎉
 
@@ -35,8 +35,6 @@ conda.
    cd Docs
    make html
    ```
-
-4. Remove the `quickstart.md` file and `customize/` folder and add your own content into `index.md`. 
 
 <!-- end quickstart -->
 
