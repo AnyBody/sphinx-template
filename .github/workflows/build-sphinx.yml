@@ -1,0 +1,26 @@
+
+name: Build sphinx page
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          environment-file: Docs/environment.yaml
+
+      # Linux and macOS
+      - name: Build sphinx page
+        shell: bash -l {0}
+        run: |
+          cd Docs
+          sphinx-build -M html . _build -W --keep-going
