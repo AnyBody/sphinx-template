@@ -1,7 +1,5 @@
 # AnyBody Sphinx template
 
-## Why use
-
 <!-- start sphinx snippet -->
 
 This template is used to easily create sphinx pages using Markdown. It uses the [sphinx book theme](https://sphinx-book-theme.readthedocs.io/), but can be easily changed:
