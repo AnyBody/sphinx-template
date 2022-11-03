@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,9 +25,21 @@ jobs:
           cd Docs
           sphinx-build -M html . _build -W --keep-going
 
-      - name: Deploy 🚀
-        if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: upload artifact 🚀
+        uses: actions/upload-pages-artifact@main
         with:
           folder: Docs/_build/html
 
+  deploy: 
+    needs: build
+    permissions:
+      pages: write    
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@main
