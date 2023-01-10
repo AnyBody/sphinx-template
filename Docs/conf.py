@@ -73,6 +73,11 @@ myst_enable_extensions = [
 ]
 myst_heading_anchors = 3
 
+
+myst_html_meta = {
+"robots":"noindex"
+}
+
 # -- Options for HTML output -------------------------------------------------
 #
 
