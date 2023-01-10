@@ -25,6 +25,13 @@ jobs:
           cd Docs
           sphinx-build -M html . _build -W --keep-going
 
+      - name: Link check
+        shell: bash -l {0}
+        run: |
+          cd Docs
+          sphinx-build -M linkcheck . _build
+          
+
       - name: upload artifact 🚀
         uses: actions/upload-pages-artifact@main
         with:
