@@ -1,0 +1,55 @@
+
+trigger: none
+
+
+pool:
+  name: build
+  demands:
+  - agent.ComputerName -equals ABT-BUILD1
+
+jobs:
+- job: build
+
+  steps:
+  - checkout: self
+
+- pwsh: | 
+    Invoke-Webrequest -URI https://anaconda.org/conda-forge/micromamba/1.1.0/download/win-64/micromamba-1.1.0-0.tar.bz2 -OutFile ~\micromamba.tar.bz2
+    (Get-FileHash ~\micromamba.tar.bz2).hash -eq "5a1e1fe69a301e817cf2795ace03c9e4a42e97cd8984b6edbc8872dad00d5097"
+    $env:Path = "C:\PROGRA~1\Git\usr\bin;" + $env:Path
+    tar.exe -xvjf ~/micromamba.tar.bz2 --strip-components 2 -C ~ Library/bin/micromamba.exe
+    Write-Host "##vso[task.setvariable variable=MAMBA_ROOT_PREFIX;]$HOME\micromamba"
+  displayName: Install conda
+
+  - pwsh: |
+      ~\micromamba.exe shell hook -s powershell | Out-String | iex
+      micromamba create --allow-downgrade -y -n $(Build.Repository.Name) -f Docs/environment.yaml
+    displayName: Install conda env
+
+
+  - pwsh: |
+      ~\micromamba.exe shell hook -s powershell | Out-String | iex
+      micromamba activate $(Build.Repository.Name) 
+
+      cd Docs
+      sphinx-build -M html . _build -W --keep-going
+    displayName: Build sphinx page
+
+  - pwsh: |
+      ~\micromamba.exe shell hook -s powershell | Out-String | iex
+      micromamba activate $(Build.Repository.Name) 
+
+      cd Docs
+      sphinx-build -M linkcheck . _build
+    displayName: Sphinx Link check
+
+
+  # - task: CopyFiles@2
+  #   displayName: Copy build documentation
+  #   inputs:
+  #     SourceFolder: Docs/_build/html
+  #     Contents: '*'
+  #     targetFolder: F:\SphinxBuilds\$(Build.Repository.Name)
+  #     overWrite: true
+  #     ignoreMakeDirErrors: true
+
