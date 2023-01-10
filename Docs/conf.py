@@ -87,7 +87,7 @@ html_theme_options: Dict[str, Any] = {
     "logo_only": True, # Only show logo in left menu (No page title)
     "repository_url": "https://github.com/AnyBody/sphinx-template",
     "repository_branch": "main",
-    "extra_navbar": 'Create by <a href="https://anybodytech.com">AnyBody Technology</a>',
+   # "extra_navbar": 'Create by <a href="https://anybodytech.com">AnyBody Technology</a>',
 
 }
 
