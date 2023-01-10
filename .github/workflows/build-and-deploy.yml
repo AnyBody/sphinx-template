@@ -32,7 +32,7 @@ jobs:
 
   deploy: 
     needs: build
-    if: 0 # GitHub pages must be enabled
+    if: 1 # GitHub pages must be enabled
     permissions:
       pages: write    
       id-token: write
