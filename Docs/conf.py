@@ -80,6 +80,23 @@ myst_html_meta = {
 
 # -- Options for HTML output -------------------------------------------------
 #
+html_sidebars = {
+    "**": [
+        "sidebar-logo.html",
+        "search-field.html",
+        "sbt-sidebar-nav.html",
+    ]
+}
+
+sidebar-logo.html: Displays the logo and site title.
+
+search-field.html: A bootstrap-based search bar (from the PyData Sphinx Theme)
+
+sbt-sidebar-nav.html: A bootstrap-based navigation menu for your book.
+
+sbt-sidebar-footer
+
+
 
 html_theme = "sphinx_book_theme"
 html_title = "Sphinx AnyBody Template"
