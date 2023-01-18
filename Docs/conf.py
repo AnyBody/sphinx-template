@@ -82,8 +82,6 @@ myst_html_meta = {
 #
 html_sidebars = {
     "**": [
-        "sidebar-logo.html",
-        "search-field.html",
         "sbt-sidebar-nav.html",
     ]
 }
