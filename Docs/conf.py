@@ -80,11 +80,11 @@ myst_html_meta = {
 
 # -- Options for HTML output -------------------------------------------------
 #
-html_sidebars = {
-    "**": [
-        "sbt-sidebar-nav.html",
-    ]
-}
+# html_sidebars = {
+#     "**": [
+#         "sbt-sidebar-nav.html",
+#     ]
+# }
 
 
 html_theme = "sphinx_book_theme"
