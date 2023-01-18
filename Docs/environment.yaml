@@ -15,4 +15,4 @@ dependencies:
   - pydata-sphinx-theme>=0.10.1
   - pip:
     - git+https://github.com/executablebooks/sphinx-design.git@main
-    - git+https://github.com/executablebooks/sphinx-book-theme.git@master
+    - git+https://github.com/choldgraf/sphinx-book-theme@jquery
