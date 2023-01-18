@@ -114,7 +114,9 @@ html_logo = "logo.svg"
 # pixels large.
 html_favicon = "_static/favicon.ico"
 
-
+html_js_files = [
+    'js/custom.js',
+]
 
 # -- Options for theme development -------------------------------------------
 # Make sure these are all set to the default values.
