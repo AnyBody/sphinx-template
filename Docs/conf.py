@@ -91,13 +91,18 @@ html_css_files = []
 html_theme_options: Dict[str, Any] = {
     "repository_url": "https://github.com/AnyBody/sphinx-template",
     "repository_branch": "main",
+    "logo": {
+      "image_light": "logo.svg",
+      "image_dark": "logo.svg",
+   }
+
    # "extra_navbar": 'Create by <a href="https://anybodytech.com">AnyBody Technology</a>',
 
 }
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/logo.svg"
+html_logo = "logo.svg"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
