@@ -97,10 +97,10 @@ html_css_files = []
 html_theme_options: Dict[str, Any] = {
     "repository_url": "https://github.com/AnyBody/sphinx-template",
     "repository_branch": "main",
-#     "logo": {
-#       "image_light": "logo.svg",
-#       "image_dark": "logo.svg",
-#    },
+    "logo": {
+      "image_light": "logo.svg",
+      "image_dark": "logo.svg",
+   },
    # "extra_navbar": 'Create by <a href="https://anybodytech.com">AnyBody Technology</a>',
 
 }
