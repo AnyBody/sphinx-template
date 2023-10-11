@@ -1,18 +1,17 @@
-name: sphinx
+name: sphinx-template
 
 channels:
   - conda-forge
 dependencies:
   - python=3.11
   - pip
-  - sphinx<6
+  - sphinx<7
   - pygments_anyscript
   - myst-parser
   - furo
   - sphinx-copybutton
   - linkify-it-py
   - pyyaml
-  - pydata-sphinx-theme>=0.10.1
-  - pip:
-    - git+https://github.com/executablebooks/sphinx-design.git@main
-    - git+https://github.com/choldgraf/sphinx-book-theme@jquery
+  - pydata-sphinx-theme
+  - sphinx-design
+  - sphinx-book-theme

@@ -49,7 +49,6 @@ extlinks = {
 #
 
 intersphinx_mapping = {
-    "refman": ("https://anyscript.org/reference-manual/", None),
     "ammr": ("https://anyscript.org/ammr-doc", None),
     "tutorials": ("https://anyscript.org/tutorials/",None),
 }

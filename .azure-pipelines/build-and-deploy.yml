@@ -23,7 +23,7 @@ jobs:
 
   - pwsh: |
       ~\micromamba.exe shell hook -s powershell | Out-String | iex
-      micromamba create --allow-downgrade -y -n $(Build.Repository.Name) -f Docs/environment.yaml
+      micromamba create -y -n $(Build.Repository.Name) -f Docs/conda-lock.yml
     displayName: Install conda env
 
 
