@@ -13,34 +13,19 @@ jobs:
   steps:
   - checkout: self
 
-- pwsh: | 
-    Invoke-Webrequest -URI https://anaconda.org/conda-forge/micromamba/1.1.0/download/win-64/micromamba-1.1.0-0.tar.bz2 -OutFile ~\micromamba.tar.bz2
-    (Get-FileHash ~\micromamba.tar.bz2).hash -eq "5a1e1fe69a301e817cf2795ace03c9e4a42e97cd8984b6edbc8872dad00d5097"
-    $env:Path = "C:\PROGRA~1\Git\usr\bin;" + $env:Path
-    tar.exe -xvjf ~/micromamba.tar.bz2 --strip-components 2 -C ~ Library/bin/micromamba.exe
-    Write-Host "##vso[task.setvariable variable=MAMBA_ROOT_PREFIX;]$HOME\micromamba"
-  displayName: Install conda
+  - pwsh: | 
+      iwr -useb https://pixi.sh/install.ps1 | iex
+      Write-Host "##vso[task.prependpath]$env:USERPROFILE/.pixi/bin"
+    displayName: Install pixi
 
   - pwsh: |
-      ~\micromamba.exe shell hook -s powershell | Out-String | iex
-      micromamba create -y -n $(Build.Repository.Name) -f Docs/conda-lock.yml
-    displayName: Install conda env
+      pixi install
+    displayName: Install/update conda env
 
-
-  - pwsh: |
-      ~\micromamba.exe shell hook -s powershell | Out-String | iex
-      micromamba activate $(Build.Repository.Name) 
-
-      cd Docs
-      sphinx-build -M html . _build -W --keep-going
+  - pwsh: pixi run sphinx-build -M html Docs/. Docs/_build -W --keep-going
     displayName: Build sphinx page
 
-  - pwsh: |
-      ~\micromamba.exe shell hook -s powershell | Out-String | iex
-      micromamba activate $(Build.Repository.Name) 
-
-      cd Docs
-      sphinx-build -M linkcheck . _build
+  - pwsh: pixi run sphinx-build -M linkcheck Docs/. Docs/_build
     displayName: Sphinx Link check
 
 

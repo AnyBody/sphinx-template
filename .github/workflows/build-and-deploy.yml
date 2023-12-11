@@ -13,25 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Conda environment from environment.yml
-        uses: mamba-org/provision-with-micromamba@main
+      - uses: prefix-dev/setup-pixi@v0.4.1
         with:
-          environment-file: Docs/environment.yaml
+          cache: true
+          cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
       # Linux and macOS
       - name: Build sphinx page
-        shell: bash -l {0}
-        run: |
-          cd Docs
-          sphinx-build -M html . _build -W --keep-going
+        run: pixi run sphinx-build -M html Docs/. Docs/_build -W --keep-going
 
       - name: Link check
-        shell: bash -l {0}
-        run: |
-          cd Docs
-          sphinx-build -M linkcheck . _build
+        run: pixi run sphinx-build -M linkcheck Docs/. Docs/_build
           
-
       - name: upload artifact 🚀
         uses: actions/upload-pages-artifact@main
         with:
