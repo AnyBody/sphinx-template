@@ -32,10 +32,60 @@ extensions = [
     "myst_parser",
     "sphinx_copybutton",
     "sphinx_design",
+    "sphinx_needs",
+    "sphinx_simplepdf",
 ]
 templates_path = ["_templates"]
 
 exclude_patterns = ['_build', 'Thumbs.db']
+
+
+# -- Sphinx Needs configuration -----------------------------------------------
+
+# MEL: Not sure what this does
+# needs_include_needs = False
+
+# Length of the ID field for the id numbers
+needs_id_length = 5
+
+
+# Need types:  These are the default
+needs_types = [
+    dict(
+        directive="req", title="Requirement", prefix="R_", color="#BFD8D2", style="node"
+    ),
+    dict(
+        directive="spec",
+        title="Specification",
+        prefix="S_",
+        color="#FEDCD2",
+        style="node",
+    ),
+    dict(
+        directive="impl",
+        title="Implementation",
+        prefix="I_",
+        color="#DF744A",
+        style="node",
+    ),
+    dict(
+        directive="test", title="Test Case", prefix="T_", color="#DCB239", style="node"
+    ),
+    dict(
+        directive="unit", title="Unit", prefix="U_", color="#AAB239", style="node"
+    ),
+]
+
+# Extra optional fields on the need objects:
+needs_extra_options = ["introduced", "updated", "impacts"]
+
+
+# Builds a json file with the need data while also building the HTML
+needs_build_json = True
+needs_reproducible_json = True
+# Build a json file for every need object
+needs_build_json_per_id = False
+
 
 
 # -- Options for extlinks ----------------------------------------------------

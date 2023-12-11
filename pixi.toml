@@ -1,0 +1,26 @@
+[project]
+name = "sphinx-template"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["Morten Enemark Lund <melund@gmail.com>"]
+channels = ["conda-forge", "anybody"]
+platforms = ["win-64"]
+
+[tasks]
+build-pdf = "sphinx-build -M simplepdf Docs/. Docs/_build"
+build-html = "sphinx-build -M html Docs/. Docs/_build"
+build-html-all = "sphinx-build -M html Docs/. Docs/_build -a"
+html = {cmd= 'explorer .\Docs\_build\html\index.html', depends_on = ["build-html-all"]}
+pdf = {cmd= 'explorer .\Docs\_build\simplepdf\Agada-Documentation.pdf', depends_on = ["build-pdf"]}
+
+
+[dependencies]
+sphinx-needs = ">=2.0.0,<2.1"
+sphinx = "<7"
+myst-parser = ">=2.0.0,<2.1"
+sphinx-simplepdf = ">=1.6.0,<1.7"
+sphinx-design = ">=0.5.0,<0.6"
+sphinx-copybutton = ">=0.5.2,<0.6"
+linkify-it-py = ">=2.0.0,<2.1"
+sphinx-book-theme = ">=1.0.1,<1.1"
+
