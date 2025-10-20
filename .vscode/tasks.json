@@ -1,0 +1,34 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Build HTML",
+			"detail": "Builds HTML files from source",
+			"command": "pixi run html",
+			"presentation": {
+				"reveal": "silent",
+				"revealProblems": "onProblem",
+				"close": true
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Build PDF",
+			"detail": "Builds PDF file from source",
+			"command": "pixi run pdf",
+			"presentation": {
+				"reveal": "silent",
+				"revealProblems": "onProblem",
+				"close": true
+			},
+			"group": {
+				"kind": "build",
+			}
+		}
+	]
+}
