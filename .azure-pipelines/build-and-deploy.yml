@@ -20,7 +20,7 @@ jobs:
 
   - pwsh: |
       pixi install
-    displayName: Install/update conda env
+    displayName: Install/update env
 
   - pwsh: pixi run sphinx-build -M html Docs/. Docs/_build -W --keep-going
     displayName: Build sphinx page
