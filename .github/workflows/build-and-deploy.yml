@@ -1,5 +1,5 @@
 
-name: Build sphinx page
+name: Sphinx Template Build and Deploy
 
 on:
   push:
