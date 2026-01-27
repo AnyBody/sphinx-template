@@ -2,6 +2,8 @@
 name: Build sphinx page
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -32,7 +34,7 @@ jobs:
 
   deploy: 
     needs: build
-    if: 1 # GitHub pages must be enabled
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     permissions:
       pages: write    
       id-token: write
