@@ -77,7 +77,11 @@ needs_types = [
 ]
 
 # Extra optional fields on the need objects:
-needs_extra_options = ["introduced", "updated", "impacts"]
+needs_fields = {
+    "introduced": {"nullable": True},
+    "updated": {"nullable": True},
+    "impacts": {"nullable": True},
+}
 
 
 # Builds a json file with the need data while also building the HTML
@@ -187,3 +191,7 @@ html_js_files = [
 #             "class": "fa-solid fa-github fa-2x",
 #         },
 #     ]
+
+# -- Options for linkcheker -------------------------------------------------------
+
+user_agent = "Sphinx/9.1.0"
