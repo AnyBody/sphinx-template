@@ -1,6 +1,6 @@
 [workspace]
 name = "sphinx-template"
-version = "0.1.2"
+version = "0.1.3"
 description = "Add a short description here"
 authors = ["Morten Enemark Lund <melund@gmail.com>"]
 channels = ["conda-forge", "anybody"]
@@ -13,16 +13,16 @@ build-html = "sphinx-build -M html Docs/. Docs/_build"
 build-html-all = "sphinx-build -M html Docs/. Docs/_build -a"
 html = {cmd= 'explorer .\Docs\_build\html\index.html', depends-on = ["build-html-all"]}
 pdf = {cmd= 'explorer .\Docs\_build\simplepdf\docs.pdf', depends-on = ["build-pdf"]}
-
+checkout-ammr = { cmd = "python scripts/repo_checkout.py --url ammr4_giturl --tag ammr_latest_tag", description = "git checkout of the src code" }
 
 [dependencies]
 sphinx = ">=9.1.0,<10"
-sphinx-needs = ">=8.1.1,<9"
+sphinx-needs = ">=8.5.0,<9"
 myst-parser = ">=5.1.0,<6"
 sphinx-simplepdf = ">=1.7.0,<2"
 sphinx-design = ">=0.7.0,<0.8"
 sphinx-copybutton = ">=0.5.2,<0.6"
-sphinx-book-theme = ">=1.2.0,<2"
+sphinx-book-theme = ">=1.4.0,<2"
 sphinxcontrib-jquery = ">=4.1,<5"
-setuptools = ">=82.0.1,<83"
-linkify-it-py = ">=2.1.0,<3"
+setuptools = ">=84.0.0,<85"
+linkify-it-py = ">=2.2.0,<3"

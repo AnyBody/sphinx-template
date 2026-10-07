@@ -1,6 +1,7 @@
+variables:
+  - template: "../version.yml"
 
 trigger: none
-
 
 pool:
   name: build

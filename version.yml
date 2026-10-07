@@ -1,0 +1,10 @@
+
+variables:
+  - name: ammr4_giturl
+    value: https://github.com/anybody/ammr4-beta.git
+
+  - name: ammr_latest_tag
+    value: ammr4-beta
+
+  - name: ammr_locked_tag 
+    value: null
